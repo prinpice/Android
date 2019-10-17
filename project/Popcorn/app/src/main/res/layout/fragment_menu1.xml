@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Menu1Fragment">
+
+    <!--TODO:swipe(새로고침로딩)를 각 프레그먼트 또는 액티비티에 생성-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/btn_account"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#edf7ed"
+                android:textColor="#ff9800 "
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:text="로그인을 해주세요" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="15dp"
+                android:background="#ff9800" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp">
+
+                <ViewFlipper
+                    android:id="@+id/vf_banner"
+                    android:layout_width="match_parent"
+                    android:scrollY="40dp"
+                    android:background="@color/graybackground"
+                    android:layout_height="300dp"/>
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/btn_search"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/text_border"
+                    android:hint="농부이름 또는 농작물 찾기" />
+
+
+                <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="13dp"
+                    android:text="확인" />
+
+            </RelativeLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparent">
+
+                            <ImageButton
+                                android:id="@+id/btn_grain"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:src="@drawable/wheat" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="곡식·콩"
+                                android:textAllCaps="true"
+                                android:textColor="#424242"
+                                android:textSize="25dp"
+                                android:textStyle="bold" />
+
+                        </FrameLayout>
+
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparent">
+
+
+                            <ImageButton
+                                android:id="@+id/btn_root"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:src="@drawable/potatos" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="뿌리채소"
+                                android:textColor="#424242"
+                                android:textSize="25dp"
+                                android:textStyle="bold" />
+
+
+
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparent">
+
+                            <ImageButton
+                                android:id="@+id/btn_leaf_vegi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:src="@drawable/vegi" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="잎·땅채소"
+                                android:textColor="#424242"
+                                android:textSize="25dp"
+                                android:textStyle="bold" />
+
+
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparent">
+
+                            <ImageButton
+                                android:id="@+id/btn_fruit_vegi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:src="@drawable/tomatos" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="과채소"
+                                android:textColor="#424242"
+                                android:textSize="25dp"
+                                android:textStyle="bold" />
+
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparent">
+
+                            <ImageButton
+                                android:id="@+id/btn_fruit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:src="@drawable/apples" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="과일·열매"
+                                android:textColor="#424242"
+                                android:textSize="25dp"
+                                android:textStyle="bold" />
+
+
+
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparent">
+
+
+                            <ImageButton
+                                android:id="@+id/btn_mushroom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:src="@drawable/sesame" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="버섯·기타"
+                                android:textColor="#424242"
+                                android:textSize="25dp"
+                                android:textStyle="bold" />
+
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp">
+
+
+                        <ImageView
+                            android:id="@+id/img_movie_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="10dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/movie_image"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toLeftOf="@+id/movietitle"
+                            android:text="자연스러운 "
+                            android:textColor="#464646"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/movietitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="13dp"
+                            android:text="영화"
+                            android:textColor="#464646"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
