@@ -1,8 +1,8 @@
-package com.android.popcorn;
+package com.android.popcorn.models;
 
 import java.util.List;
 
-public class FarmerListItem {
+public class FarmerItem {
 
     private int id;
     private int enroll_no;
@@ -17,9 +17,9 @@ public class FarmerListItem {
     private List followers;
     private int account;
 
-    public FarmerListItem(){}
+    public FarmerItem(){}
 
-    public FarmerListItem(int id, int enroll_no, String enroll_center, String farm, String crop, String name, String region, int sort, String crop_image, String profile_image, List followers, int account){
+    public FarmerItem(int id, int enroll_no, String enroll_center, String farm, String crop, String name, String region, int sort, String crop_image, String profile_image, List followers, int account){
         this.id = id;
         this.enroll_no = enroll_no;
         this.enroll_center = enroll_center;

@@ -37,7 +37,7 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/back_green_arrow"
                     android:backgroundTint="#424242"
-                    android:id="@+id/img_btn_back" />
+                    android:id="@+id/btn_movielist_back" />
 
 
             </RelativeLayout>
@@ -48,7 +48,7 @@
                 android:layout_height="140dp">
 
                 <ViewFlipper
-                    android:id="@+id/vf_banner"
+                    android:id="@+id/vf_banner_movielist"
                     android:layout_width="match_parent"
                     android:background="@color/graybackground"
                     android:layout_height="200dp" />
@@ -60,7 +60,7 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recyclerview" />
+                android:id="@+id/recyclerview_movielist" />
 
 
         </LinearLayout>

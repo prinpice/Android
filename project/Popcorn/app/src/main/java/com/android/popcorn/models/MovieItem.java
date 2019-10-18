@@ -1,6 +1,6 @@
-package com.android.popcorn;
+package com.android.popcorn.models;
 
-public class MovieListItem {
+public class MovieItem {
 
     private int id;
     private String title_ko;
@@ -13,9 +13,9 @@ public class MovieListItem {
     private String poster_url;
     private String image_url;
 
-    public MovieListItem(){}
+    public MovieItem(){}
 
-    public MovieListItem(int id, String title_ko, String title_en, String open_year, String genre, String nation, String director, String description, String poster_url, String image_url){
+    public MovieItem(int id, String title_ko, String title_en, String open_year, String genre, String nation, String director, String description, String poster_url, String image_url){
         this.id = id;
         this.title_ko= title_ko;
         this.title_en = title_en;
@@ -108,4 +108,5 @@ public class MovieListItem {
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
+
 }

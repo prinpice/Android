@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".Menu3Fragment">
+        tools:context=".fragments.MyReviewFragment">
 
         <!--TODO:ListVIew로 구성하기-->
 
@@ -18,7 +18,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/layout_review1"
+                android:id="@+id/layout_myreview"
                 android:visibility="gone"
                 android:orientation="vertical">
                 <LinearLayout
@@ -46,7 +46,7 @@
                                 android:text="SWon"
                                 android:textSize="20dp"
                                 android:textColor="#000"
-                                android:id="@+id/txt_username"
+                                android:id="@+id/txt_myreview_username"
                                 android:layout_marginRight="5dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                             android:numStars="5"
                             android:rating="4"
                             android:isIndicator="true"
-                            android:id="@+id/rating_user_review3"/>
+                            android:id="@+id/rating_myreview_user_review"/>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -72,14 +72,14 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="100dp"
-                        android:id="@+id/img_user_review"
+                        android:id="@+id/img_myreview_user_review"
                         android:src="@drawable/papp"
                         android:layout_gravity="right"/>
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-                        android:id="@+id/img_user_review2"
+                        android:id="@+id/img_myreview_user_review2"
                         android:src="@drawable/pap"
                         />
                 </LinearLayout>
@@ -88,11 +88,10 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txt_user_review"
+                    android:id="@+id/txt_myreview_user_review"
                     android:text="이집 쌀 맛있네요, 찰기와 윤기가 좌르르르~"/>
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
-
 </layout>

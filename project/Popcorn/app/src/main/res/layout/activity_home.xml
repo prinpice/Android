@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <android.support.design.widget.CoordinatorLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".activities.HomeActivity">
 
-        <!-- 각각의 Fragment를 넣을 Container -->
+        <!-- Fragment를 넣을 Container -->
         <FrameLayout
-            android:id="@+id/frame_layout"
+            android:id="@+id/layout_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="?attr/actionBarSize"/>
@@ -23,5 +25,4 @@
             app:menu="@menu/footer_menu"/>
 
     </android.support.design.widget.CoordinatorLayout>
-
 </layout>

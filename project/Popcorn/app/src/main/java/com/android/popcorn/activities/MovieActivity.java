@@ -1,16 +1,18 @@
-package com.android.popcorn;
+package com.android.popcorn.activities;
 
-import android.databinding.DataBindingUtil;
-import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.android.popcorn.R;
 import com.android.popcorn.databinding.ActivityMovieBinding;
+import com.android.popcorn.fragments.MovieListFragment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
+//MovieActivity
 public class MovieActivity extends AppCompatActivity {
 
     ActivityMovieBinding movieBinding;
@@ -31,17 +34,15 @@ public class MovieActivity extends AppCompatActivity {
     String receive;
     Bundle bundle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         movieBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie);
 
-
         try {
-//            Log.i("movie", new Task().execute().get());
+
             receive = new Task().execute().get();
-//            Log.i("movie", receive);
+
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -52,25 +53,23 @@ public class MovieActivity extends AppCompatActivity {
         bundle.putString("js", receive);
 
 
-//        FragmentTransaction transaction = fragmentManager.beginTransaction();
-//        movieListFragment.setArguments(bundle);
-//        transaction.replace(R.id.movie_frame_layout, movieListFragment).commitAllowingStateLoss();
 
         setDefaultMovieFragment();
-    }
+
+    }//onCreate()
 
     // Fragment 초기 화면 고정
     public void setDefaultMovieFragment(){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frame_layout, movieListFragment);
+        transaction.add(R.id.layout_movie, movieListFragment);
         transaction.commit();
-    }
+    }//setFefaultMovieFragment()
 
     public void replaceMovieFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.movie_frame_layout, fragment).commit();
-    }
+        fragmentTransaction.replace(R.id.layout_movie, fragment).commit();
+    }//replaceMovieFragment()
 
 
     public class Task extends AsyncTask<String, Void, String> {
@@ -99,11 +98,6 @@ public class MovieActivity extends AppCompatActivity {
                     }
                     receiveMsg = buffer.toString();
                     Log.i("receiveMsg", receiveMsg);
-//                    Log.i("movie", receiveMsg);
-//                    movielistjsonParser(receiveMsg);
-//                    Log.i("receiveMsg", ""+movielistjsonParser(receiveMsg));
-//                    Log.i("receiveMsg", String.valueOf(photoinfoList));
-//                    receive = buffer.toString();
 
 
                     reader.close();
@@ -125,5 +119,5 @@ public class MovieActivity extends AppCompatActivity {
 
         }
 
-    }
+    }//Task
 }

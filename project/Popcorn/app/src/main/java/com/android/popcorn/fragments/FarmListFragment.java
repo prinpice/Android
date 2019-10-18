@@ -1,22 +1,19 @@
-package com.android.popcorn;
+package com.android.popcorn.fragments;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.android.popcorn.databinding.FragmentMenu1SubBinding;
+import com.android.popcorn.R;
+import com.android.popcorn.activities.HomeActivity;
+import com.android.popcorn.databinding.FragmentFarmListBinding;
+import com.android.popcorn.models.FarmerItem;
+import com.android.popcorn.views.adapters.FarmerListAdapter;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,122 +27,91 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Menu1SubFragment
+public class FarmListFragment extends Fragment {
 
-public class Menu1SubFragment extends Fragment {
-//    TextView txt_title, txt_farm_title, txt_star_point, txt_count_review, txt_count_comment, txt_detail, txt_search;
-//    Button btn_search;
+    FragmentFarmListBinding farmListBinding;
 
-//    LinearLayout layout_search;
+    int code = 0;
+    String search = "";
 
-    FragmentMenu1SubBinding menu1SubBinding;
-
-    private String URL_JSON = "https://mynongjak-cloned-piie.c9users.io/api/v1/farmer/";
+//    private String URL_JSON = "https://mynongjak-cloned-piie.c9users.io/api/v1/farmer/";
+    private String URL_JSON = "http://10.0.2.2:8000/api/v1/farmer/";
     private JsonArrayRequest ArrayRequest;
     private RequestQueue requestQueue;
-    private List<FarmerListItem> lstFarmer;
-//    private RecyclerView recyclerView;
+    private List<FarmerItem> lstFarmer;
 
-
-
-    // 각각의 Fragment마다 Instance를 반환해 줄 메소드를 생성
-    public static Menu1SubFragment newInstance() {
-        return new Menu1SubFragment();
+    public static FarmListFragment newInstance(int code, String search) {
+        FarmListFragment fragment = new FarmListFragment();
+        Bundle bundle = new Bundle();
+        Log.i("movie", code + "");
+        bundle.putInt("code", code);
+        bundle.putString("search", search);
+        fragment.setArguments(bundle);
+        return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        String search = "";
-
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_menu1_sub, container, false);
-        menu1SubBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu1_sub, container, false);
+        farmListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_farm_list, container, false);
 
-//        layout_search = view.findViewById(R.id.layout_search);
+        if (getArguments() != null){
+            code = getArguments().getInt("code");
+            search = getArguments().getString("search");
+            if (code == 0){
+                farmListBinding.txtFarmlistTitle.setText("검색 결과");
+                farmListBinding.txtFarmlistSearch.setText("\""+search+"\" ");
+                farmListBinding.layoutFarmlistSearch.setVisibility(View.VISIBLE);
+            }else{
+                switch (code){
+                    case 100:
+                        farmListBinding.txtFarmlistTitle.setText("곡식·콩");
+                        break;
 
-//        txt_title = view.findViewById(R.id.txt_title);
-//        txt_search = view.findViewById(R.id.txt_search);
+                    case 200:
+                        farmListBinding.txtFarmlistTitle.setText("뿌리채소");
+                        break;
 
-//        btn_search = view.findViewById(R.id.btn_search);
+                    case 300:
+                        farmListBinding.txtFarmlistTitle.setText("잎·땅채소");
+                        break;
 
+                    case 400:
+                        farmListBinding.txtFarmlistTitle.setText("과채소");
+                        break;
 
+                    case 500:
+                        farmListBinding.txtFarmlistTitle.setText("과일·열매");
+                        break;
 
-        menu1SubBinding.btnSearch.setOnClickListener(new View.OnClickListener() {
+                    case 600:
+                        farmListBinding.txtFarmlistTitle.setText("버섯·기타");
+                        break;
+                }
+            }
+        }
+
+        farmListBinding.btnFarmlistSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO: 여기 페이지에서 결과 수정해서 보여주기
             }
         });
 
-
-        final Bundle bundle = getArguments();
-
-        Log.i("msg", String.valueOf(bundle.getInt("code")));
-
-
-
-        if (bundle.getString("search") != null && bundle.getInt("code")== 0){
-            menu1SubBinding.txtTitle.setText("검색 결과");
-            search = bundle.getString("search");
-            menu1SubBinding.txtSearch.setText("\""+search+"\" ");
-            menu1SubBinding.layoutSearch.setVisibility(View.VISIBLE);
-        }
-
-
-//        recyclerView = view.findViewById(R.id.recyclerview_farm);
-
-
-        int code = bundle.getInt("code");
-
-        switch(code){
-            case 100:
-                menu1SubBinding.txtTitle.setText("곡식·콩");
-                break;
-
-            case 200:
-                menu1SubBinding.txtTitle.setText("뿌리채소");
-                break;
-
-            case 300:
-                menu1SubBinding.txtTitle.setText("잎·땅채소");
-                break;
-
-            case 400:
-                menu1SubBinding.txtTitle.setText("과채소");
-                break;
-
-            case 500:
-                menu1SubBinding.txtTitle.setText("과일·열매");
-                break;
-
-            case 600:
-                menu1SubBinding.txtTitle.setText("버섯·기타");
-                break;
-
-        }
-
-//        ImageButton btn_back = view.findViewById(R.id.btn_back);
-
-        menu1SubBinding.btnBack.setOnClickListener(new View.OnClickListener() {
+        farmListBinding.btnFarmlistBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).replaceFragment(Menu1Fragment.newInstance());
+                farmListBinding.layoutFarmlistSearch.setVisibility(View.GONE);
+                ((HomeActivity)getActivity()).replaceFragment(MainFragment.newInstance());
             }
         });
 
-
-
         jsoncall(code, search);
 
-
-
-
-        return menu1SubBinding.getRoot();
-
-
-    }
+        return farmListBinding.getRoot();
+    }//onCreateView
 
 
     public void jsoncall(final int num, final String search) {
@@ -164,7 +130,7 @@ public class Menu1SubFragment extends Fragment {
                     try {
 
                         jsonObject = response.getJSONObject(i);
-                        FarmerListItem farmerItem = new FarmerListItem();
+                        FarmerItem farmerItem = new FarmerItem();
 
                         farmerItem.setId(jsonObject.getInt("id"));
                         farmerItem.setEnroll_no(jsonObject.getInt("enroll_no"));
@@ -176,7 +142,7 @@ public class Menu1SubFragment extends Fragment {
                         farmerItem.setSort(jsonObject.getInt("sort"));
                         farmerItem.setCrop_image(jsonObject.getString("crop_image"));
                         farmerItem.setProfile_image(jsonObject.getString("profile_image"));
-                        Log.i("movie", farmerItem.getName());
+//                        Log.i("movie", farmerItem.getName());
 
 
                         if (farmerItem.getSort() == num) {
@@ -192,7 +158,7 @@ public class Menu1SubFragment extends Fragment {
                     }
                 }
 
-
+                farmListBinding.layoutFarmlistSearch.setVisibility(View.GONE);
                 setRvadapter(lstFarmer);
             }
         }, new Response.ErrorListener() {
@@ -209,13 +175,15 @@ public class Menu1SubFragment extends Fragment {
 
 
 
-    public void setRvadapter (List<FarmerListItem> lst) {
+    public void setRvadapter (List<FarmerItem> lst) {
 
         FarmerListAdapter myAdapter = new FarmerListAdapter(getActivity(),lst) ;
-        menu1SubBinding.recyclerviewFarm.setLayoutManager(new LinearLayoutManager(getActivity()));
-        menu1SubBinding.recyclerviewFarm.setAdapter(myAdapter);
+        farmListBinding.recyclerviewFarm.setLayoutManager(new LinearLayoutManager(getActivity()));
+        farmListBinding.recyclerviewFarm.setAdapter(myAdapter);
 
 
 
     }
+
+
 }

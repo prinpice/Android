@@ -1,31 +1,33 @@
-package com.android.popcorn;
+package com.android.popcorn.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.databinding.DataBindingUtil;
 import android.os.Environment;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+
+import com.android.popcorn.R;
+import com.android.popcorn.databinding.ActivitySignupBinding;
 
 public class SignupActivity extends AppCompatActivity {
 
-    Button btn_cancel, btn_signup;
+    ActivitySignupBinding signupBinding;
+
     SQLiteDatabase mDatabase;
 
-    TextInputEditText et_id, et_email, et_pwd, et_pwd_confirm;
-
-//    MemberShipOpenHelper openHelper;
+//    TextInputEditText et_id, et_email, et_pwd, et_pwd_confirm;
 
     @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        signupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
 
         mDatabase = openOrCreateDatabase(
                 Environment.getExternalStorageDirectory() + "/testDB/myuser.db",//읽어올 경로
@@ -34,21 +36,21 @@ public class SignupActivity extends AppCompatActivity {
 
 //        openHelper = new MemberShipOpenHelper(this);
 //        mDatabase = openHelper.getWritableDatabase();
-        btn_signup = findViewById(R.id.btn_signup);
-        btn_cancel = findViewById(R.id.btn_cancel);
-        et_id = findViewById(R.id.et_id);
-        et_email = findViewById(R.id.et_email);
-        et_pwd = findViewById(R.id.et_pwd);
-        et_pwd_confirm = findViewById(R.id.et_pwd_confirm);
+//        btn_signup = findViewById(R.id.btn_signup);
+//        btn_cancel = findViewById(R.id.btn_cancel);
+//        et_id = findViewById(R.id.et_id);
+//        et_email = findViewById(R.id.et_email);
+//        et_pwd = findViewById(R.id.et_pwd);
+//        et_pwd_confirm = findViewById(R.id.et_pwd_confirm);
 
 
-        btn_signup.setOnClickListener(new View.OnClickListener() {
+        signupBinding.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = et_id.getText().toString();
-                String email = et_email.getText().toString();
-                String pwd = et_pwd.getText().toString();
-                String pwd_confirm = et_pwd_confirm.getText().toString();
+                String id = signupBinding.etSignupId.getText().toString();
+                String email = signupBinding.etSignupEmail.getText().toString();
+                String pwd = signupBinding.etSignupPwd.getText().toString();
+                String pwd_confirm = signupBinding.etSignupPwdConfirm.getText().toString();
                 String sql = "SELECT * FROM user WHERE userID='"+id+"' OR email='"+email+"'";
                 Cursor cursor = mDatabase.rawQuery(sql, null);
                 if (cursor.getCount() == 1){
@@ -70,7 +72,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        signupBinding.btnSignupCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(SignupActivity.this, LoginActivity.class);
@@ -79,5 +81,5 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-    }//onCreate
+    }//onCreate()
 }

@@ -1,4 +1,4 @@
-package com.android.popcorn;
+package com.android.popcorn.views.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.popcorn.R;
+import com.android.popcorn.fragments.FarmerInfoFragment;
+import com.android.popcorn.models.FarmerItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -20,13 +23,9 @@ import java.util.List;
 
 public class FarmerListAdapter extends RecyclerView.Adapter<FarmerListAdapter.MyViewHolder> {
 
-
-
     RequestOptions options ;
     private Context mContext ;
-    private List<FarmerListItem> mData ;
-
-
+    private List<FarmerItem> mData ;
 
     public FarmerListAdapter(Context mContext, List lst) {
 
@@ -76,9 +75,13 @@ public class FarmerListAdapter extends RecyclerView.Adapter<FarmerListAdapter.My
                 bundle.putInt("id", mData.get(position).getId());
                 bundle.putInt("enroll_no", mData.get(position).getEnroll_no());
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                Fragment fragment = new Detail1Fragment();
+                Fragment fragment = new FarmerInfoFragment();
                 fragment.setArguments(bundle);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
+
+
+
+
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, fragment).addToBackStack(null).commit();
 
 
             }
@@ -109,6 +112,4 @@ public class FarmerListAdapter extends RecyclerView.Adapter<FarmerListAdapter.My
         }
     }
 
-
 }
-

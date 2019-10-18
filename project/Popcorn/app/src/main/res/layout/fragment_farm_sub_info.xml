@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <FrameLayout
 
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".InfoFragment">
+        tools:context=".fragments.FarmSubInfoFragment">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -17,7 +17,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/linlay1"
+                    android:id="@+id/layout_farmsubinfo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -34,7 +34,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:id="@+id/txt_farm"
+                        android:id="@+id/txt_farmsubinfo_farm_title"
                         android:text="{{ farm }}"
                         android:textColor="#ff9800"
                         android:textSize="40dp"
@@ -48,7 +48,7 @@
                         android:textSize="16dp"
                         android:textStyle="bold" />
                     <TextView
-                        android:id="@+id/txt_crop"
+                        android:id="@+id/txt_farmsubinfo_crop_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -99,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:id="@+id/txt_enroll_no"
+                            android:id="@+id/txt_farmsubinfo_enroll_no"
                             android:text=" {{ enroll_no }} "
                             android:textColor="#424242"
                             android:textSize="16dp" />
@@ -120,7 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:id="@+id/txt_enroll_center"
+                            android:id="@+id/txt_farmsubinfo_enroll_center"
                             android:text=" {{ enroll_center }} "
                             android:textColor="#424242"
                             android:textSize="16dp" />
@@ -141,7 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:id="@+id/txt_region"
+                            android:id="@+id/txt_farmsubinfo_region"
                             android:text=" {{ region }} "
                             android:textColor="#424242"
                             android:textSize="16dp" />
@@ -151,5 +151,4 @@
         </ScrollView>
 
     </FrameLayout>
-
 </layout>

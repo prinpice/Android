@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".Menu1Fragment">
+        tools:context=".fragments.MainFragment">
 
         <!--TODO:swipe(새로고침로딩)를 각 프레그먼트 또는 액티비티에 생성-->
 
@@ -21,7 +21,7 @@
 
 
                 <Button
-                    android:id="@+id/btn_account"
+                    android:id="@+id/btn_main_login"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="#edf7ed"
@@ -57,11 +57,11 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/et_search"
+                        android:id="@+id/et_main_search"
                         android:layout_width="wrap_content"
                         android:paddingHorizontal="40dp"
                         android:layout_centerInParent="true"
-                        android:layout_toLeftOf="@+id/btn_search"
+                        android:layout_toLeftOf="@+id/btn_main_search"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
@@ -70,7 +70,7 @@
 
 
                     <Button
-                        android:id="@+id/btn_search"
+                        android:id="@+id/btn_main_search"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -103,7 +103,7 @@
                                 android:background="@color/transparent">
 
                                 <ImageButton
-                                    android:id="@+id/btn_grain"
+                                    android:id="@+id/btn_main_grain"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/transparent"
@@ -133,7 +133,7 @@
 
 
                                 <ImageButton
-                                    android:id="@+id/btn_root"
+                                    android:id="@+id/btn_main_root"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/transparent"
@@ -161,7 +161,7 @@
                                 android:background="@color/transparent">
 
                                 <ImageButton
-                                    android:id="@+id/btn_leaf_vegi"
+                                    android:id="@+id/btn_main_leaf_vegi"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/transparent"
@@ -197,7 +197,7 @@
                                 android:background="@color/transparent">
 
                                 <ImageButton
-                                    android:id="@+id/btn_fruit_vegi"
+                                    android:id="@+id/btn_main_fruit_vegi"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/transparent"
@@ -223,7 +223,7 @@
                                 android:background="@color/transparent">
 
                                 <ImageButton
-                                    android:id="@+id/btn_fruit"
+                                    android:id="@+id/btn_main_fruit"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/transparent"
@@ -252,7 +252,7 @@
 
 
                                 <ImageButton
-                                    android:id="@+id/btn_mushroom"
+                                    android:id="@+id/btn_main_mushroom"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/transparent"
@@ -280,7 +280,7 @@
 
 
                             <ImageView
-                                android:id="@+id/img_movie_list"
+                                android:id="@+id/img_main_movie_list"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginVertical="10dp"
@@ -292,14 +292,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
-                                android:layout_toLeftOf="@+id/movietitle"
+                                android:layout_toLeftOf="@+id/txt_main_movie"
                                 android:text="자연스러운 "
                                 android:textColor="#464646"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/movietitle"
+                                android:id="@+id/txt_main_movie"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -321,5 +321,4 @@
         </ScrollView>
 
     </LinearLayout>
-
 </layout>

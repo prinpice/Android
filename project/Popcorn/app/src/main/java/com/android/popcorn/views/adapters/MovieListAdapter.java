@@ -1,4 +1,4 @@
-package com.android.popcorn;
+package com.android.popcorn.views.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.popcorn.R;
+import com.android.popcorn.fragments.MovieInfoFragment;
+import com.android.popcorn.models.MovieItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -19,11 +22,9 @@ import java.util.List;
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyViewHolder> {
 
-
-
     RequestOptions options ;
     private Context mContext ;
-    private List<MovieListItem> mData ;
+    private List<MovieItem> mData ;
 
 
     public MovieListAdapter(Context mContext, List lst) {
@@ -39,13 +40,13 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MovieListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view ;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.movie_list_item,parent,false);
         // click listener here
-        return new MyViewHolder(view);
+        return new MovieListAdapter.MyViewHolder(view);
     }
 
     @Override
@@ -70,9 +71,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
                 bundle.putString("poster_url", mData.get(position).getPoster_url());
                 bundle.putString("image_url", mData.get(position).getImage_url());
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                Fragment fragment = new MovieDetailFragment();
+                Fragment fragment = new MovieInfoFragment();
                 fragment.setArguments(bundle);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.movie_frame_layout, fragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout_movie, fragment).addToBackStack(null).commit();
             }
         });
     }
@@ -91,14 +92,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            txt_movie_title = itemView.findViewById(R.id.txt_movie_title);
-            txt_movie_year = itemView.findViewById(R.id.txt_movie_year);
-            txt_movie_nation = itemView.findViewById(R.id.txt_movie_nation);
-            img_movie_poster = itemView.findViewById(R.id.img_movie_poster);
-            layout_movie_item = itemView.findViewById(R.id.layout_movie_item);
+//            txt_movie_title = itemView.findViewById(R.id.txt_movie_title);
+//            txt_movie_year = itemView.findViewById(R.id.txt_movie_year);
+//            txt_movie_nation = itemView.findViewById(R.id.txt_movie_nation);
+//            img_movie_poster = itemView.findViewById(R.id.img_movie_poster);
+//            layout_movie_item = itemView.findViewById(R.id.layout_movie_item);
         }
     }
 
-
 }
-

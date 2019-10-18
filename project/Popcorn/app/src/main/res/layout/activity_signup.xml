@@ -11,7 +11,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:id="@+id/layout_id">
+            android:id="@+id/layout_signup_id">
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:hint="아이디"
@@ -19,15 +19,15 @@
                 android:ems="20"
                 android:paddingHorizontal="15dp"
                 android:layout_height="50dp"
-                android:id="@+id/et_id"
+                android:id="@+id/et_signup_id"
                 />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout_id"
-            android:id="@+id/layout_email">
+            android:layout_below="@+id/layout_signup_id"
+            android:id="@+id/layout_signup_email">
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:hint="이메일"
@@ -35,16 +35,16 @@
                 android:ems="20"
                 android:paddingHorizontal="15dp"
                 android:layout_height="50dp"
-                android:id="@+id/et_email"
+                android:id="@+id/et_signup_email"
                 />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_marginTop="20dp"
-            android:id="@+id/layout_pwd"
+            android:id="@+id/layout_signup_pwd"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout_email">
+            android:layout_below="@+id/layout_signup_email">
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:hint="패스워드"
@@ -52,7 +52,7 @@
                 android:ems="20"
                 android:paddingHorizontal="15dp"
                 android:layout_height="50dp"
-                android:id="@+id/et_pwd"/>
+                android:id="@+id/et_signup_pwd"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -60,7 +60,7 @@
             android:id="@+id/layout_pwd_confirm"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout_pwd">
+            android:layout_below="@+id/layout_signup_pwd">
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:hint="패스워드 확인"
@@ -68,7 +68,7 @@
                 android:ems="20"
                 android:paddingHorizontal="15dp"
                 android:layout_height="50dp"
-                android:id="@+id/et_pwd_confirm"
+                android:id="@+id/et_signup_pwd_confirm"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:text="회원가입"
             android:id="@+id/btn_signup"
-            android:layout_below="@+id/layout_pwd_confirm"
+            android:layout_below="@+id/layout_signup_pwd_confirm"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="#fbc02d"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:text="취소"
             android:background="@color/transparent"
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_signup_cancel"
             android:layout_below="@+id/btn_signup"
             />
 
