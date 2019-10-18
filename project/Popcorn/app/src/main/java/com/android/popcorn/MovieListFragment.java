@@ -1,6 +1,7 @@
 package com.android.popcorn;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.android.popcorn.databinding.FragmentMovieListBinding;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,15 +32,17 @@ import java.util.List;
 
 
 public class MovieListFragment extends Fragment {
-    ImageButton img_btn_back;
+//    ImageButton img_btn_back;
 
-    private ViewFlipper vf_banner;
+    FragmentMovieListBinding movieListBinding;
+
+//    private ViewFlipper vf_banner;
 
     private String URL_JSON = "https://mynongjak-cloned-piie.c9users.io/api/v1/movies/";
     private JsonArrayRequest ArrayRequest ;
     private RequestQueue requestQueue ;
     private List<MovieListItem> lstMovie = new ArrayList<>();
-    private RecyclerView recyclerView ;
+//    private RecyclerView recyclerView ;
 
 
 
@@ -55,16 +59,16 @@ public class MovieListFragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_movie_list, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_movie_list, container, false);
+        movieListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_list, container, false);
 
 
-        vf_banner = view.findViewById(R.id.vf_banner);
+//        vf_banner = view.findViewById(R.id.vf_banner);
 
         int[] movie_images = {R.drawable.movie1, R.drawable.movie2, R.drawable.movie3, R.drawable.movie4};
         for (int i = 0; i < movie_images.length; i++){
             ImageView imageView = new ImageView(getActivity());
             imageView.setImageResource(movie_images[i]);
-            vf_banner.addView(imageView);
+            movieListBinding.vfBanner.addView(imageView);
 
         }
 
@@ -72,15 +76,15 @@ public class MovieListFragment extends Fragment {
         Animation out = AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_out_right);
 
 
-        vf_banner.setInAnimation(in);
-        vf_banner.setOutAnimation(out);
-        vf_banner.setFlipInterval(3000);
-        vf_banner.setAutoStart(true);
+        movieListBinding.vfBanner.setInAnimation(in);
+        movieListBinding.vfBanner.setOutAnimation(out);
+        movieListBinding.vfBanner.setFlipInterval(3000);
+        movieListBinding.vfBanner.setAutoStart(true);
 
 
         // 뒤로가기
-        img_btn_back = view.findViewById(R.id.img_btn_back);
-        img_btn_back.setOnClickListener(new View.OnClickListener() {
+//        img_btn_back = view.findViewById(R.id.img_btn_back);
+        movieListBinding.imgBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), MainActivity.class);
@@ -90,13 +94,13 @@ public class MovieListFragment extends Fragment {
             }
         });
 
-        recyclerView = view.findViewById(R.id.recyclerview);
+//        recyclerView = view.findViewById(R.id.recyclerview);
         jsoncall();
 
 
 
 
-        return view;
+        return movieListBinding.getRoot();
 
     }
 
@@ -157,8 +161,8 @@ public class MovieListFragment extends Fragment {
     public void setRvadapter (List<MovieListItem> lst) {
 
         MovieListAdapter myAdapter = new MovieListAdapter(getActivity(),lst) ;
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(myAdapter);
+        movieListBinding.recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        movieListBinding.recyclerview.setAdapter(myAdapter);
 
 
 

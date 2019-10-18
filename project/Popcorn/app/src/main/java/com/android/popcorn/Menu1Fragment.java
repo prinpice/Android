@@ -2,6 +2,7 @@ package com.android.popcorn;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,17 +17,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.android.popcorn.databinding.FragmentMenu1Binding;
 import com.bumptech.glide.Glide;
 
 
 public class Menu1Fragment extends Fragment {
-    Button btn_account, btn_search;
-    ImageButton btn_grain, btn_root, btn_leaf_vegi, btn_fruit_vegi, btn_fruit, btn_mushroom;;
-    Intent intent;
-    ImageView img_movie_list;
-    EditText et_search;
 
-    private ViewFlipper vf_banner;
+    FragmentMenu1Binding menu1Binding;
+
+//    Button btn_account, btn_search;
+//    ImageButton btn_grain, btn_root, btn_leaf_vegi, btn_fruit_vegi, btn_fruit, btn_mushroom;;
+    Intent intent;
+//    ImageView img_movie_list;
+//    EditText et_search;
+
+//    private ViewFlipper vf_banner;
 
     // 이미지 url연결
 
@@ -41,26 +46,26 @@ public class Menu1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_menu1, null);
-        btn_grain = view.findViewById(R.id.btn_grain);
-        btn_root = view.findViewById(R.id.btn_root);
-        btn_leaf_vegi = view.findViewById(R.id.btn_leaf_vegi);
-        btn_fruit_vegi = view.findViewById(R.id.btn_fruit_vegi);
-        btn_fruit = view.findViewById(R.id.btn_fruit);
-        btn_mushroom = view.findViewById(R.id.btn_mushroom);
+        menu1Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu1, container, false);
+//        btn_grain = view.findViewById(R.id.btn_grain);
+//        btn_root = view.findViewById(R.id.btn_root);
+//        btn_leaf_vegi = view.findViewById(R.id.btn_leaf_vegi);
+//        btn_fruit_vegi = view.findViewById(R.id.btn_fruit_vegi);
+//        btn_fruit = view.findViewById(R.id.btn_fruit);
+//        btn_mushroom = view.findViewById(R.id.btn_mushroom);
 
 
-        btn_account = view.findViewById(R.id.btn_account);
-        btn_search = view.findViewById(R.id.btn_search);
-        img_movie_list = view.findViewById(R.id.img_movie_list);
-        et_search = view.findViewById(R.id.et_search);
+//        btn_account = view.findViewById(R.id.btn_account);
+//        btn_search = view.findViewById(R.id.btn_search);
+//        img_movie_list = view.findViewById(R.id.img_movie_list);
+//        et_search = view.findViewById(R.id.et_search);
 
         if (bundle.getString("id") != null) {
-            btn_account.setText("안녕하세요 " + bundle.getString("id") + "님");
+            menu1Binding.btnAccount.setText("안녕하세요 " + bundle.getString("id") + "님");
         }
 
 
-        Glide.with(getActivity()).load("https://movie-phinf.pstatic.net/20180205_9/1517796368980sxuwQ_JPEG/movie_image.jpg?type=m665_443_2").into(img_movie_list);
+        Glide.with(getActivity()).load("https://movie-phinf.pstatic.net/20180205_9/1517796368980sxuwQ_JPEG/movie_image.jpg?type=m665_443_2").into(menu1Binding.imgMovieList);
 
 
 
@@ -78,13 +83,13 @@ public class Menu1Fragment extends Fragment {
 //        });
 
 
-        vf_banner = view.findViewById(R.id.vf_banner);
+//        vf_banner = view.findViewById(R.id.vf_banner);
 
         int[] movie_images = {R.drawable.farmer_pic2, R.drawable.straw, R.drawable.couple};
         for (int i = 0; i < movie_images.length; i++){
             ImageView imageView = new ImageView(getActivity());
             imageView.setImageResource(movie_images[i]);
-            vf_banner.addView(imageView);
+            menu1Binding.vfBanner.addView(imageView);
 
         }
 
@@ -92,12 +97,12 @@ public class Menu1Fragment extends Fragment {
         Animation out = AnimationUtils.loadAnimation(getActivity(), android.R.anim.slide_out_right);
 
 
-        vf_banner.setInAnimation(in);
-        vf_banner.setOutAnimation(out);
-        vf_banner.setFlipInterval(3000);
-        vf_banner.setAutoStart(true);
+        menu1Binding.vfBanner.setInAnimation(in);
+        menu1Binding.vfBanner.setOutAnimation(out);
+        menu1Binding.vfBanner.setFlipInterval(3000);
+        menu1Binding.vfBanner.setAutoStart(true);
 
-        btn_account.setOnClickListener(new View.OnClickListener() {
+        menu1Binding.btnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), LoginActivity.class);
@@ -106,7 +111,7 @@ public class Menu1Fragment extends Fragment {
             }
         });
 
-        btn_search.setOnClickListener( click );
+        menu1Binding.btnSearch.setOnClickListener( click );
 
 //        btn_search.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -119,15 +124,15 @@ public class Menu1Fragment extends Fragment {
 //            }
 //        });
 
-        btn_grain.setOnClickListener( click );
-        btn_root.setOnClickListener( click );
-        btn_leaf_vegi.setOnClickListener( click );
-        btn_fruit_vegi.setOnClickListener( click );
-        btn_fruit.setOnClickListener( click );
-        btn_mushroom.setOnClickListener( click );
+        menu1Binding.btnGrain.setOnClickListener( click );
+        menu1Binding.btnRoot.setOnClickListener( click );
+        menu1Binding.btnLeafVegi.setOnClickListener( click );
+        menu1Binding.btnFruitVegi.setOnClickListener( click );
+        menu1Binding.btnFruit.setOnClickListener( click );
+        menu1Binding.btnMushroom.setOnClickListener( click );
 
 
-        img_movie_list.setOnClickListener(new View.OnClickListener() {
+        menu1Binding.imgMovieList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), MovieActivity.class);
@@ -136,7 +141,7 @@ public class Menu1Fragment extends Fragment {
             }
         });
 
-        return view;
+        return menu1Binding.getRoot();
 
     }
 
@@ -171,7 +176,7 @@ public class Menu1Fragment extends Fragment {
                     break;
 
                 case R.id.btn_search:
-                    bundle.putString("search", et_search.getText().toString());
+                    bundle.putString("search", menu1Binding.etSearch.getText().toString());
                     break;
 
             }

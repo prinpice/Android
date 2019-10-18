@@ -1,74 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="별점"
-        android:paddingLeft="10dp"/>
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:layout_gravity="center"
-        android:id="@+id/rating"/>
-    <!--numStars : 총점의 별 개수를 지정해준다.-->
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="사진 업로드"/>
-
-
-    <!--TODO: image upload-->
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:background="@color/graybackground"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="후기"/>
-
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_review"
-        android:inputType="text|textMultiLine"
-        android:hint="후기를 작성해 주세요"/>
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="취소"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:id="@+id/btn_no"/>
+            android:text="별점"
+            android:paddingLeft="10dp"/>
 
-        <Button
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_gravity="center"
+            android:id="@+id/rating"/>
+        <!--numStars : 총점의 별 개수를 지정해준다.-->
+
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:text="확인"
-            android:id="@+id/btn_ok"/>
+            android:text="사진 업로드"/>
+
+
+        <!--TODO: image upload-->
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@color/graybackground"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="후기"/>
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_review"
+            android:inputType="text|textMultiLine"
+            android:hint="후기를 작성해 주세요"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="취소"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:id="@+id/btn_no"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="확인"
+                android:id="@+id/btn_ok"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</layout>

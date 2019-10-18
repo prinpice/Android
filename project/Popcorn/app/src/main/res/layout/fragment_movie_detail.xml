@@ -1,371 +1,373 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MovieDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MovieDetailFragment">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@color/transparent"
-                android:paddingBottom="20dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/img_image"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#99ffffff" />
-
-                <ImageButton
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/back_green_arrow"
-                    android:backgroundTint="#424242"
-                    android:id="@+id/btn_back"/>
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="90dp"
-                    android:src="@drawable/movie_poster"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/img_poster"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="20dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="리틀 포레스트"
-                    android:textSize="20dp"
-                    android:id="@+id/txt_tit"
-                    android:textStyle="bold"
-                    android:textColor="#424242"
-                    android:layout_toRightOf="@id/img_poster"
-                    android:layout_above="@+id/txt_sub"/>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txt_sub"
-                    android:layout_alignBottom="@id/img_poster"
-                    android:layout_toRightOf="@id/img_poster"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#424242"
-                        android:id="@+id/year"
-                        android:text="2018" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#424242"
-                        android:textStyle="bold"
-                        android:text=" · " />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#424242"
-                        android:id="@+id/nation"
-                        android:text="한국" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="#424242"
-                        android:text=" · " />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#424242"
-                        android:id="@+id/genre"
-                        android:text="드라마" />
-                </LinearLayout>
-
-
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:padding="20dp"
-                android:id="@+id/linlay1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="기본정보"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    android:layout_marginBottom="5dp"
-                    android:id="@+id/txt_title" />
-
-
-                <ScrollView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_title">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="내용"
-                        android:id="@+id/txt_info"/>
-
-                </ScrollView>
-
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:background="#edf7ed ">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="감독"
-                    android:textColor="#1b5e20"
-                    android:id="@+id/txt_title_director"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="임순애"
-                    android:layout_alignLeft="@+id/txt_title_director"
-                    android:layout_below="@+id/txt_title_director"
-                    android:layout_marginRight="30dp"
-                    android:id="@+id/txt_director"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="장르"
-                    android:textColor="#1b5e20 "
-                    android:layout_toRightOf="@+id/txt_director"
-                    android:id="@+id/txt_title_genre"/>
-
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="드라마"
-                    android:layout_alignLeft="@+id/txt_title_genre"
-                    android:layout_below="@+id/txt_title_genre"
-                    android:layout_marginRight="30dp"
-                    android:id="@+id/txt_genre"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="제작 국가"
-                    android:textColor="#1b5e20 "
-                    android:layout_toRightOf="@+id/txt_genre"
-                    android:layout_marginRight="30dp"
-                    android:id="@+id/txt_title_country"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="한국"
-                    android:layout_alignLeft="@+id/txt_title_country"
-                    android:layout_below="@+id/txt_title_country"
-                    android:id="@+id/txt_country"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="제작 년도"
-                    android:layout_toRightOf="@+id/txt_title_country"
-                    android:textColor="#1b5e20 "
-                    android:id="@+id/txt_title_year"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2018"
-                    android:layout_alignLeft="@+id/txt_title_year"
-                    android:layout_below="@id/txt_title_year"
-                    android:layout_marginRight="30dp"
-                    android:id="@+id/txt_year"/>
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="3.8"
-                    android:textColor="#1b5e20 "
-                    android:textSize="30dp"
-                    android:layout_marginRight="60dp"
-                    android:id="@+id/txt_average"
-                    android:layout_alignLeft="@+id/txt_title_average"
-                    />
-
-                <TextView
-                    android:id="@+id/txt_title_average"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_average"
-                    android:textColor="#424242"
-                    android:text="평균평점"
-                    android:textSize="12dp" />
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_toRightOf="@+id/txt_average"
-                    android:id="@+id/layout_star">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/icons8_edit_90"
-                        android:tint="#424242"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txt_eval"
-                        android:textColor="#424242 "
-                        android:text="평가하기"
-                        android:textSize="12dp"/>
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_centerInParent="true"
-                android:background="#4CAF50"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="20dp"/>
-
-            <!--코멘트-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginHorizontal="20dp"
-                android:id="@+id/layout_title_comment">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="코멘트"
-                    android:textSize="18dp"
-                    android:textColor="#000"
-                    android:layout_marginRight="7dp"
-                    android:textStyle="bold"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_gravity="bottom"
-                    android:id="@+id/txt_comment_count"/>
-
-            </LinearLayout>
-
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="@color/transparent"
+                    android:paddingBottom="20dp">
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/img_image" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="#99ffffff" />
+
+                    <ImageButton
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/back_green_arrow"
+                        android:backgroundTint="#424242"
+                        android:id="@+id/btn_back" />
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="90dp"
+                        android:src="@drawable/movie_poster"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/img_poster"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="리틀 포레스트"
+                        android:textSize="20dp"
+                        android:id="@+id/txt_tit"
+                        android:textStyle="bold"
+                        android:textColor="#424242"
+                        android:layout_toRightOf="@id/img_poster"
+                        android:layout_above="@+id/txt_sub" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txt_sub"
+                        android:layout_alignBottom="@id/img_poster"
+                        android:layout_toRightOf="@id/img_poster">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#424242"
+                            android:id="@+id/year"
+                            android:text="2018" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#424242"
+                            android:textStyle="bold"
+                            android:text=" · " />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#424242"
+                            android:id="@+id/nation"
+                            android:text="한국" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="#424242"
+                            android:text=" · " />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#424242"
+                            android:id="@+id/genre"
+                            android:text="드라마" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:visibility="gone"
-                    android:id="@+id/relay_comment"
-                    android:layout_height="100dp">
-
-                    <RatingBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:numStars="5"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:isIndicator="true"
-                        android:rating="3"
-                        android:id="@+id/comment_rating"/>
+                    android:layout_height="120dp"
+                    android:padding="20dp"
+                    android:id="@+id/linlay1">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SWon"
-                        android:layout_alignTop="@+id/comment_rating"
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/txt_username"
-                        android:layout_alignParentEnd="true"/>
+                        android:text="기본정보"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/txt_title" />
 
 
-                    <TextView
+                    <ScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/comment_rating"
-                        android:id="@+id/txt_comment_content"
-                        android:layout_below="@+id/comment_rating"
-                        android:text="코멘트"/>
+                        android:layout_below="@+id/txt_title">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="내용"
+                            android:id="@+id/txt_info" />
+
+                    </ScrollView>
+
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:background="#edf7ed ">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="감독"
+                        android:textColor="#1b5e20"
+                        android:id="@+id/txt_title_director" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="임순애"
+                        android:layout_alignLeft="@+id/txt_title_director"
+                        android:layout_below="@+id/txt_title_director"
+                        android:layout_marginRight="30dp"
+                        android:id="@+id/txt_director" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="장르"
+                        android:textColor="#1b5e20 "
+                        android:layout_toRightOf="@+id/txt_director"
+                        android:id="@+id/txt_title_genre" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="드라마"
+                        android:layout_alignLeft="@+id/txt_title_genre"
+                        android:layout_below="@+id/txt_title_genre"
+                        android:layout_marginRight="30dp"
+                        android:id="@+id/txt_genre" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="제작 국가"
+                        android:textColor="#1b5e20 "
+                        android:layout_toRightOf="@+id/txt_genre"
+                        android:layout_marginRight="30dp"
+                        android:id="@+id/txt_title_country" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="한국"
+                        android:layout_alignLeft="@+id/txt_title_country"
+                        android:layout_below="@+id/txt_title_country"
+                        android:id="@+id/txt_country" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="제작 년도"
+                        android:layout_toRightOf="@+id/txt_title_country"
+                        android:textColor="#1b5e20 "
+                        android:id="@+id/txt_title_year" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018"
+                        android:layout_alignLeft="@+id/txt_title_year"
+                        android:layout_below="@id/txt_title_year"
+                        android:layout_marginRight="30dp"
+                        android:id="@+id/txt_year" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="3.8"
+                        android:textColor="#1b5e20 "
+                        android:textSize="30dp"
+                        android:layout_marginRight="60dp"
+                        android:id="@+id/txt_average"
+                        android:layout_alignLeft="@+id/txt_title_average" />
+
+                    <TextView
+                        android:id="@+id/txt_title_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_average"
+                        android:textColor="#424242"
+                        android:text="평균평점"
+                        android:textSize="12dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@+id/txt_average"
+                        android:id="@+id/layout_star">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icons8_edit_90"
+                            android:tint="#424242" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txt_eval"
+                            android:textColor="#424242 "
+                            android:text="평가하기"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerInParent="true"
+                    android:background="#4CAF50"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="20dp" />
+
+                <!--코멘트-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginHorizontal="20dp"
+                    android:id="@+id/layout_title_comment">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="코멘트"
+                        android:textSize="18dp"
+                        android:textColor="#000"
+                        android:layout_marginRight="7dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_gravity="bottom"
+                        android:id="@+id/txt_comment_count" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:id="@+id/relay_comment"
+                        android:layout_height="100dp">
+
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:numStars="5"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:isIndicator="true"
+                            android:rating="3"
+                            android:id="@+id/comment_rating" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SWon"
+                            android:layout_alignTop="@+id/comment_rating"
+                            android:layout_marginRight="5dp"
+                            android:id="@+id/txt_username"
+                            android:layout_alignParentEnd="true" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@+id/comment_rating"
+                            android:id="@+id/txt_comment_content"
+                            android:layout_below="@+id/comment_rating"
+                            android:text="코멘트" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
+        </ScrollView>
 
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

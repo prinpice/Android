@@ -3,6 +3,7 @@ package com.android.popcorn;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.android.popcorn.databinding.ActivityMainBinding;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -21,60 +23,102 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding mainBinding;
+
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
-    private FragmentManager fragmentManager = getSupportFragmentManager();
+//    private FragmentManager fragmentManager = getSupportFragmentManager();
     // 4개의 메뉴에 들어갈 Fragment들
-//    private Menu1Fragment homeFragment = new Menu1Fragment();
+    private Menu1Fragment homeFragment = new Menu1Fragment();
     private Menu2Fragment pickFragment = new Menu2Fragment();
     private Menu3Fragment reviewFragment = new Menu3Fragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final Fragment fragment = new Menu1Fragment();
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        Intent i = new Intent();
-        final Bundle bundle = i.getExtras();
-        fragment.setArguments(bundle);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
+//        Intent i = new Intent();
+//        final Bundle bundle = i.getExtras();
+//        fragment.setArguments(bundle);
+
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         // 첫 화면 지정
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frame_layout, fragment).commitAllowingStateLoss();
+//        FragmentTransaction transaction = fragmentManager.beginTransaction();
+//        transaction.replace(R.id.frame_layout, fragment).commitAllowingStateLoss();
 
+        mainBinding.bottomNavigationView.setOnNavigationItemSelectedListener( bottomClick );
 
+//        // bottomNavigationView의 아이템이 선택될 때 호출될 리스너 등록
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                switch (item.getItemId()) {
+//                    case R.id.menu_home:
+//
+//                        transaction.replace(R.id.frame_layout, fragment).commitAllowingStateLoss();
+//
+//                        break;
+//
+//                    case R.id.menu_pick:
+//                        transaction.replace(R.id.frame_layout, pickFragment).commitAllowingStateLoss();
+//                        break;
+//
+//                    case R.id.menu_review:
+//                        transaction.replace(R.id.frame_layout, reviewFragment).commitAllowingStateLoss();
+//                        break;
+//
+//
+//                }
+//
+//                return true;
+//            }
+//        });
 
-        // bottomNavigationView의 아이템이 선택될 때 호출될 리스너 등록
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                switch (item.getItemId()) {
-                    case R.id.menu_home:
-
-                        transaction.replace(R.id.frame_layout, fragment).commitAllowingStateLoss();
-
-                        break;
-
-                    case R.id.menu_pick:
-                        transaction.replace(R.id.frame_layout, pickFragment).commitAllowingStateLoss();
-                        break;
-
-                    case R.id.menu_review:
-                        transaction.replace(R.id.frame_layout, reviewFragment).commitAllowingStateLoss();
-                        break;
-
-
-                }
-
-                return true;
-            }
-        });
+        setDefaultFragment();
 
     }
 
+    // bottomNavigationView의 아이템이 선택될 때 호출될 리스너 등록
+    BottomNavigationView.OnNavigationItemSelectedListener bottomClick = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            switch (menuItem.getItemId()) {
+                case R.id.menu_home:
+
+//                    transaction.replace(R.id.frame_layout, homeFragment).commitAllowingStateLoss();
+                    replaceFragment(homeFragment);
+
+                    break;
+
+                case R.id.menu_pick:
+//                    transaction.replace(R.id.frame_layout, pickFragment).commitAllowingStateLoss();
+                    replaceFragment(pickFragment);
+                    break;
+
+                case R.id.menu_review:
+//                    transaction.replace(R.id.frame_layout, reviewFragment).commitAllowingStateLoss();
+                    replaceFragment(reviewFragment);
+                    break;
+
+
+            }
+
+            return true;
+        }
+    };//bottomClick();
+
+    // Fragment 초기 화면 고정
+    public void setDefaultFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.frame_layout, homeFragment);
+        transaction.commit();
+    }
+
+    // Fragment 화면 전환
     public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -1,5 +1,6 @@
 package com.android.popcorn;
 
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -8,6 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.android.popcorn.databinding.ActivityMovieBinding;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +21,8 @@ import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 public class MovieActivity extends AppCompatActivity {
+
+    ActivityMovieBinding movieBinding;
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private MovieListFragment movieListFragment = new MovieListFragment();
@@ -30,13 +35,13 @@ public class MovieActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
+        movieBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie);
 
 
         try {
 //            Log.i("movie", new Task().execute().get());
             receive = new Task().execute().get();
-            Log.i("movie", receive);
+//            Log.i("movie", receive);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -47,14 +52,18 @@ public class MovieActivity extends AppCompatActivity {
         bundle.putString("js", receive);
 
 
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        movieListFragment.setArguments(bundle);
-        transaction.replace(R.id.movie_frame_layout, movieListFragment).commitAllowingStateLoss();
+//        FragmentTransaction transaction = fragmentManager.beginTransaction();
+//        movieListFragment.setArguments(bundle);
+//        transaction.replace(R.id.movie_frame_layout, movieListFragment).commitAllowingStateLoss();
 
+        setDefaultMovieFragment();
+    }
 
-
-
-
+    // Fragment 초기 화면 고정
+    public void setDefaultMovieFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.frame_layout, movieListFragment);
+        transaction.commit();
     }
 
     public void replaceMovieFragment(Fragment fragment) {

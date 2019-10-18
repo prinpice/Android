@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -19,17 +20,22 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.android.popcorn.databinding.FragmentDetail1Binding;
+
 
 public class Detail1Fragment extends Fragment {
+
+    FragmentDetail1Binding detail1Binding;
+
     // 각각의 Fragment마다 Instance를 반환해 줄 메소드를 생성
     public static Detail1Fragment newInstance() {
         return new Detail1Fragment();
     }
 
-    Button btn_call, frag_info, frag_review, btn_take;
-    ImageButton btn_back;
-    TextView txt_farm_title, txt_rating, txt_review, txt_comment;
-    RatingBar rating;
+//    Button btn_call, frag_info, frag_review, btn_take;
+//    ImageButton btn_back;
+//    TextView txt_farm_title, txt_rating, txt_review, txt_comment;
+//    RatingBar rating;
 
 
     int num = 0;
@@ -41,7 +47,7 @@ public class Detail1Fragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_detail1, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_detail1, null);
+        detail1Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail1, container, false);
 
 
         bundle = getArguments();
@@ -53,21 +59,21 @@ public class Detail1Fragment extends Fragment {
         fragmentTransaction.add(R.id.sub_frame_layout, new ProductFragment()).commit();
 
 
-        btn_call = view.findViewById(R.id.btn_call);
-        btn_take = view.findViewById(R.id.btn_take);
-        btn_back = view.findViewById(R.id.btn_back);
+//        btn_call = view.findViewById(R.id.btn_call);
+//        btn_take = view.findViewById(R.id.btn_take);
+//        btn_back = view.findViewById(R.id.btn_back);
 
-        txt_farm_title = view.findViewById(R.id.txt_farm_title);
-        txt_rating = view.findViewById(R.id.txt_rating);
-        txt_review = view.findViewById(R.id.txt_review);
-        txt_comment = view.findViewById(R.id.txt_comment);
-        rating = view.findViewById(R.id.rating);
-        frag_info = view.findViewById(R.id.frag_info);
-        frag_review = view.findViewById(R.id.frag_review);
+//        txt_farm_title = view.findViewById(R.id.txt_farm_title);
+//        txt_rating = view.findViewById(R.id.txt_rating);
+//        txt_review = view.findViewById(R.id.txt_review);
+//        txt_comment = view.findViewById(R.id.txt_comment);
+//        rating = view.findViewById(R.id.rating);
+//        frag_info = view.findViewById(R.id.frag_info);
+//        frag_review = view.findViewById(R.id.frag_review);
 
-        Log.i("msg", String.valueOf(bundle.getInt("fcode")));
-        Log.i("msg", String.valueOf(bundle.getInt("code")));
-        btn_back.setOnClickListener(new View.OnClickListener() {
+//        Log.i("msg", String.valueOf(bundle.getInt("fcode")));
+//        Log.i("msg", String.valueOf(bundle.getInt("code")));
+        detail1Binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (bundle.getInt("code") == 50){
@@ -83,19 +89,19 @@ public class Detail1Fragment extends Fragment {
         });
 
         String str = bundle.getString("name") + " 농부의 " + bundle.getString("crop");
-        txt_farm_title.setText(str);
-        rating.setRating((float)3.5);
-        txt_rating.setText("3");
-        txt_review.setText("최근리뷰 0+");
-        txt_comment.setText("최근농부님댓글 0+");
+        detail1Binding.txtFarmTitle.setText(str);
+        detail1Binding.rating.setRating((float)3.5);
+        detail1Binding.txtRating.setText("3");
+        detail1Binding.txtReview.setText("최근리뷰 0+");
+        detail1Binding.txtComment.setText("최근농부님댓글 0+");
 
 
-        frag_info.setOnClickListener( click );
-        frag_review.setOnClickListener( click );
+        detail1Binding.fragInfo.setOnClickListener( click );
+        detail1Binding.fragReview.setOnClickListener( click );
 
 
 
-        btn_call.setOnClickListener(new View.OnClickListener() {
+        detail1Binding.btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //전화걸기 권한에 대한 수락여부 확인
@@ -110,7 +116,7 @@ public class Detail1Fragment extends Fragment {
             }
         });
 
-        btn_take.setOnClickListener(new View.OnClickListener() {
+        detail1Binding.btnTake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bundle.putBoolean("take", true);
@@ -120,7 +126,7 @@ public class Detail1Fragment extends Fragment {
 
 
 
-        return view;
+        return detail1Binding.getRoot();
 
     }
 
@@ -130,8 +136,8 @@ public class Detail1Fragment extends Fragment {
             switch (view.getId()){
 
                 case R.id.frag_info:
-                    frag_info.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.transparent));
-                    frag_review.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.graybackground));
+                    detail1Binding.fragInfo.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.transparent));
+                    detail1Binding.fragReview.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.graybackground));
                     Fragment fragment = new InfoFragment();
                     fragment.setArguments(bundle);
                     setChildFragment(fragment);
@@ -139,8 +145,8 @@ public class Detail1Fragment extends Fragment {
 
 
                 case R.id.frag_review:
-                    frag_info.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.graybackground));
-                    frag_review.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.transparent));
+                    detail1Binding.fragInfo.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.graybackground));
+                    detail1Binding.fragReview.setBackgroundColor(getActivity().getApplicationContext().getResources().getColor(R.color.transparent));
                     setChildFragment(new ReviewFragment());
                     break;
 
