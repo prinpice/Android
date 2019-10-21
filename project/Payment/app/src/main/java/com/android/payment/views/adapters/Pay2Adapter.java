@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import com.android.payment.R;
 import com.android.payment.databinding.ItemPay2Binding;
@@ -60,13 +59,6 @@ public class Pay2Adapter extends BaseAdapter {
         return view;
     }
 
-
-    class MemberViewHolder {
-        TextView txt_pay2_name;
-        TextView txt_pay2_sgroup;
-        TextView txt_pay2_pay2;
-        TextView txt_pay2_tempexcept;
-    }
 
     // MainActivity에서 Adapter에있는 ArrayList에 data를 추가시켜주는 함수
     public void addItem(MemberVO memberVO) {

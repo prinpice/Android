@@ -23,12 +23,10 @@ public class ManageActivity extends AppCompatActivity {
 
     ActivityManageBinding manageBinding;
 
-    //    EditText nameEdit;
     DatabaseHelper databaseHelper;
 
 
     ManageAdapter adapter;
-//    ListView listview_manage;
 
     long now = System.currentTimeMillis();
     Date date = new Date(now);
@@ -55,8 +53,6 @@ public class ManageActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String getTime = sdf.format(date);
         String name = manageBinding.etManageName.getText().toString().trim();
-        Spinner spinner_manage_sgroup = findViewById(R.id.spinner_manage_sgroup);
-        CheckBox checkbox_tempexcept = findViewById(R.id.checkbox_tempexcept);
         String spinner_result;
         int sgroup;
         int tempexcept;
@@ -74,7 +70,7 @@ public class ManageActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "이미 존재하는 이름입니다.", Toast.LENGTH_SHORT).show();
                     break;
                 }
-                spinner_result = spinner_manage_sgroup.getSelectedItem().toString();
+                spinner_result = manageBinding.spinnerManageSgroup.getSelectedItem().toString();
                 try{
                     sgroup = Integer.parseInt(spinner_result);
                 }catch (NumberFormatException e){
@@ -82,7 +78,7 @@ public class ManageActivity extends AppCompatActivity {
                     break;
                 }
                 tempexcept = 0;
-                if (checkbox_tempexcept.isChecked()){
+                if (manageBinding.checkboxTempexcept.isChecked()){
                     tempexcept = 1;
                 }
 
@@ -95,7 +91,7 @@ public class ManageActivity extends AppCompatActivity {
                 db.execSQL(sql);
                 Toast.makeText(getApplicationContext(), "추가되었습니다", Toast.LENGTH_SHORT).show();
                 manageBinding.etManageName.setText(null);
-                checkbox_tempexcept.setChecked(false);
+                manageBinding.checkboxTempexcept.setChecked(false);
 
                 break;
 
@@ -117,7 +113,7 @@ public class ManageActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "존재하지 않는 이름입니다.", Toast.LENGTH_SHORT).show();
                     break;
                 }
-                spinner_result = spinner_manage_sgroup.getSelectedItem().toString();
+                spinner_result = manageBinding.spinnerManageSgroup.getSelectedItem().toString();
                 try{
                     sgroup = Integer.parseInt(spinner_result);
                 }catch (NumberFormatException e){
@@ -125,7 +121,7 @@ public class ManageActivity extends AppCompatActivity {
                     break;
                 }
                 tempexcept = 0;
-                if (checkbox_tempexcept.isChecked()){
+                if (manageBinding.checkboxTempexcept.isChecked()){
                     tempexcept = 1;
                 }
 
@@ -134,7 +130,7 @@ public class ManageActivity extends AppCompatActivity {
                 db.execSQL(sql);
                 Toast.makeText(getApplicationContext(), "수정되었습니다.", Toast.LENGTH_SHORT).show();
                 manageBinding.etManageName.setText(null);
-                checkbox_tempexcept.setChecked(false);
+                manageBinding.checkboxTempexcept.setChecked(false);
                 getSearchData(name);
                 break;
         }

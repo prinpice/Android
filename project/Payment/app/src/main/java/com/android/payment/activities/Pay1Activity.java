@@ -21,14 +21,9 @@ public class Pay1Activity extends AppCompatActivity {
 
     ActivityPay1Binding pay1Binding;
 
-//    TextView txt_pay1_total, txt_pay1_enrollment, txt_pay1_paid, txt_pay1_unpaid, txt_pay1_percent;
-
-//    EditText et_pay1_name;
-
     DatabaseHelper databaseHelper;
 
     Pay1Adapter pay1Adapter;
-//    ListView listview_pay1;
 
     long now = System.currentTimeMillis();
     Date date = new Date(now);
@@ -46,17 +41,7 @@ public class Pay1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         pay1Binding = DataBindingUtil.setContentView(this,  R.layout.activity_pay1);
 
-//        txt_pay1_total = findViewById(R.id.txt_pay1_total);
-//        txt_pay1_enrollment = findViewById(R.id.txt_pay1_enrollment);
-//        txt_pay1_paid = findViewById(R.id.txt_pay1_paid);
-//        txt_pay1_unpaid = findViewById(R.id.txt_pay1_unpaid);
-//        txt_pay1_percent = findViewById(R.id.txt_pay1_percent);
-
-//        et_pay1_name = findViewById(R.id.et_pay1_name);
-
         databaseHelper = new DatabaseHelper(this, dbName, null, dbVersion);
-
-//        listview_pay1 = findViewById(R.id.listview_pay1);
 
         getPercent(0);
 
@@ -69,7 +54,6 @@ public class Pay1Activity extends AppCompatActivity {
         Date date = new Date(now);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String getTime = sdf.format(date);
-//        Spinner spinner_pay1_sgroup = findViewById(R.id.spinner_pay1_sgroup);
         String spinner_pay1_result = pay1Binding.spinnerPay1Sgroup.getSelectedItem().toString();
 
         switch (v.getId()) {
@@ -79,7 +63,6 @@ public class Pay1Activity extends AppCompatActivity {
                 if (!getSearchName(name)){
                     Toast.makeText(getApplicationContext(), "해당 이름이 없습니다.", Toast.LENGTH_SHORT).show();
                 }else {
-//                    CheckBox checkbox_pay1_paid = findViewById(R.id.checkbox_pay1_paid);
                     db = databaseHelper.getWritableDatabase();
                     int pay1_pay = 0;
                     if (pay1Binding.checkboxPay1Paid.isChecked()){
