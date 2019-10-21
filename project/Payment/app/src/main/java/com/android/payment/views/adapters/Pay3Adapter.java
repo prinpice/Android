@@ -1,5 +1,6 @@
 package com.android.payment.views.adapters;
 
+import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.android.payment.R;
+import com.android.payment.databinding.ItemPay3Binding;
 import com.android.payment.models.MemberVO;
 
 import java.util.ArrayList;
@@ -36,38 +38,25 @@ public class Pay3Adapter extends BaseAdapter {
     // 실제로 Item이 보여지는 부분
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        MemberViewHolder holder;
+        ItemPay3Binding itemPay3Binding;
+
         if (view == null) {
-            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_pay3, null, false);
-
-            holder = new MemberViewHolder();
-            holder.txt_pay3_name = view.findViewById(R.id.txt_pay3_name);
-            holder.txt_pay3_sgroup = view.findViewById(R.id.txt_pay3_sgroup);
-            holder.txt_pay3_pay3 = view.findViewById(R.id.txt_pay3_pay3);
-            holder.txt_pay3_tempexcept = view.findViewById(R.id.txt_pay3_tempexcept);
-
-            view.setTag(holder);
+            itemPay3Binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.item_pay3, viewGroup, false);
+            view = itemPay3Binding.getRoot();
+            view.setTag(itemPay3Binding);
 
         }else{
-            holder = (MemberViewHolder)view.getTag();
+            itemPay3Binding = (ItemPay3Binding) view.getTag();
         }
 
 
         MemberVO memberVO = listPay3.get(position);
 
-        holder.txt_pay3_name.setText(memberVO.getName());
-        holder.txt_pay3_sgroup.setText(String.valueOf(memberVO.getSgroup()));
-        holder.txt_pay3_pay3.setText(String.valueOf(memberVO.getPay3()));
-        holder.txt_pay3_tempexcept.setText(String.valueOf(memberVO.getTempexcept()));
+        itemPay3Binding.txtPay3Name.setText(memberVO.getName());
+        itemPay3Binding.txtPay3Sgroup.setText(String.valueOf(memberVO.getSgroup()));
+        itemPay3Binding.txtPay3Pay3.setText(String.valueOf(memberVO.getPay3()));
+        itemPay3Binding.txtPay3Tempexcept.setText(String.valueOf(memberVO.getTempexcept()));
         return view;
-    }
-
-
-    class MemberViewHolder {
-        TextView txt_pay3_name;
-        TextView txt_pay3_sgroup;
-        TextView txt_pay3_pay3;
-        TextView txt_pay3_tempexcept;
     }
 
     // MainActivity에서 Adapter에있는 ArrayList에 data를 추가시켜주는 함수

@@ -1,5 +1,6 @@
 package com.android.payment.views.adapters;
 
+import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.android.payment.R;
+import com.android.payment.databinding.ItemPay2Binding;
 import com.android.payment.models.MemberVO;
 
 import java.util.ArrayList;
@@ -36,29 +38,25 @@ public class Pay2Adapter extends BaseAdapter {
     // 실제로 Item이 보여지는 부분
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        MemberViewHolder holder;
+
+        ItemPay2Binding itemPay2Binding;
+
         if (view == null) {
-            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_pay2, null, false);
-
-            holder = new MemberViewHolder();
-            holder.txt_pay2_name = view.findViewById(R.id.txt_pay2_name);
-            holder.txt_pay2_sgroup = view.findViewById(R.id.txt_pay2_sgroup);
-            holder.txt_pay2_pay2 = view.findViewById(R.id.txt_pay2_pay2);
-            holder.txt_pay2_tempexcept = view.findViewById(R.id.txt_pay2_tempexcept);
-
-            view.setTag(holder);
+            itemPay2Binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.item_pay2, viewGroup, false);
+            view = itemPay2Binding.getRoot();
+            view.setTag(itemPay2Binding);
 
         }else{
-            holder = (MemberViewHolder)view.getTag();
+            itemPay2Binding = (ItemPay2Binding) view.getTag();
         }
 
 
         MemberVO memberVO = listPay2.get(position);
 
-        holder.txt_pay2_name.setText(memberVO.getName());
-        holder.txt_pay2_sgroup.setText(String.valueOf(memberVO.getSgroup()));
-        holder.txt_pay2_pay2.setText(String.valueOf(memberVO.getPay2()));
-        holder.txt_pay2_tempexcept.setText(String.valueOf(memberVO.getTempexcept()));
+        itemPay2Binding.txtPay2Name.setText(memberVO.getName());
+        itemPay2Binding.txtPay2Sgroup.setText(String.valueOf(memberVO.getSgroup()));
+        itemPay2Binding.txtPay2Pay2.setText(String.valueOf(memberVO.getPay2()));
+        itemPay2Binding.txtPay2Tempexcept.setText(String.valueOf(memberVO.getTempexcept()));
         return view;
     }
 

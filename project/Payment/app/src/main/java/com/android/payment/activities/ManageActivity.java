@@ -43,15 +43,7 @@ public class ManageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         manageBinding = DataBindingUtil.setContentView(this, R.layout.activity_manage);
 
-//        nameEdit = findViewById(R.id.nameedit);
-
-
-
-
         databaseHelper = new DatabaseHelper(this, dbName, null, dbVersion);
-
-
-//        listview_manage = findViewById(R.id.listview_manage);
 
     }//onCreate()
 
